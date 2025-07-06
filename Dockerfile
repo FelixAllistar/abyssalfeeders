@@ -1,8 +1,8 @@
 # Use a Node.js base image
-FROM node:20-alpine
+FROM node:20-slim
 
 # Install build dependencies for native modules like better-sqlite3
-RUN apk add --no-cache python3 build-base
+RUN apt-get update && apt-get install -y python3 g++ make
 
 # Set the working directory
 WORKDIR /app
@@ -11,7 +11,7 @@ WORKDIR /app
 COPY package*.json ./
 
 # Install dependencies
-RUN npm ci
+RUN npm install --build-from-source better-sqlite3 && npm ci
 
 # Copy the rest of the application code
 COPY . .
