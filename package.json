@@ -13,7 +13,8 @@
     "dev": "concurrently \"npm:dev:backend\" \"npm:dev:frontend\"",
     "dev:backend": "nodemon src/server.ts",
     "dev:frontend": "vite",
-    "start": "NODE_ENV=production ts-node src/server.ts",
+    "build:backend": "tsc --project tsconfig.json",
+    "start": "NODE_ENV=production node dist/server.js",
     "build": "vite build"
   },
   "dependencies": {

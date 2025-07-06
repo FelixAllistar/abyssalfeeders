@@ -16,6 +16,9 @@ COPY . .
 # Build the frontend
 RUN npm run build
 
+# Build the backend
+RUN npm run build:backend
+
 # Expose the port your Express server listens on
 EXPOSE 3001
 
