@@ -1,5 +1,5 @@
 
-import express from 'express';
+import express, { Request, Response, RequestHandler } from 'express';
 import Database from 'better-sqlite3';
 import cors from 'cors';
 import path from 'path';
@@ -172,7 +172,7 @@ app.get('/api/leaderboard', (req, res) => {
   }
 });
 
-app.get('/api/character-image/:id', async (req, res) => {
+app.get('/api/character-image/:id', (async (req: Request<{ id: string }>, res: Response) => {
     try {
         const characterId = parseInt(req.params.id, 10);
         const stmt = db.prepare(`
@@ -241,7 +241,7 @@ app.get('/api/character-image/:id', async (req, res) => {
         console.error(error);
         res.status(500).send('Internal Server Error');
     }
-});
+}) as RequestHandler<{ id: string }>);
 
 // Serve frontend in production
 if (process.env.NODE_ENV === 'production') {
