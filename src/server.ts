@@ -179,7 +179,7 @@ app.get('/api/character-image/:id', (req, res) => {
             SELECT image_data, image_content_type, image_fetched_at
             FROM leaderboard WHERE character_id = ?
         `);
-        const result: { image_data: Buffer, image_content_type: string, image_fetched_at: string } | undefined = stmt.get(characterId);
+        const result: { image_data: Buffer | null, image_content_type: string | null, image_fetched_at: string | null } | undefined = stmt.get(characterId);
 
         const sevenDaysAgo = new Date();
         sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
