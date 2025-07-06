@@ -3,6 +3,11 @@ import express, { Request, Response, RequestHandler } from 'express';
 import Database from 'better-sqlite3';
 import cors from 'cors';
 import path from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const app = express();
 const port = 3001;
