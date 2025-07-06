@@ -1,6 +1,7 @@
 {
-  "name": "bun-react-template",
-  "version": "0.1.0",
+  "name": "abyssal-feeders",
+  "version": "1.0.0",
+  "description": "EVE Online character killmail tracker for abyssal space encounters",
   "private": true,
   "type": "module",
   "main": "src/index.tsx",

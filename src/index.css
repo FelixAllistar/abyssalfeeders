@@ -10,26 +10,76 @@
   }
 }
 
-/* cool Bun background animation 😎 */
+/* Space-themed starfield background */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
   z-index: -1;
-  opacity: 0.05;
-  background: url("./logo.svg");
-  background-size: 256px;
-  transform: rotate(-12deg) scale(1.35);
-  animation: slide 30s linear infinite;
+  background: 
+    /* Random scattered stars of different sizes and brightness */
+    radial-gradient(1px 1px at 2% 10%, rgba(255, 255, 255, 0.9), transparent),
+    radial-gradient(1px 1px at 8% 25%, rgba(255, 255, 255, 0.6), transparent),
+    radial-gradient(2px 2px at 15% 40%, rgba(255, 255, 255, 0.8), transparent),
+    radial-gradient(1px 1px at 22% 15%, rgba(255, 255, 255, 0.7), transparent),
+    radial-gradient(1px 1px at 35% 60%, rgba(255, 255, 255, 0.5), transparent),
+    radial-gradient(2px 2px at 42% 30%, rgba(255, 255, 255, 0.9), transparent),
+    radial-gradient(1px 1px at 48% 75%, rgba(255, 255, 255, 0.6), transparent),
+    radial-gradient(1px 1px at 55% 45%, rgba(255, 255, 255, 0.8), transparent),
+    radial-gradient(2px 2px at 65% 20%, rgba(255, 255, 255, 0.7), transparent),
+    radial-gradient(1px 1px at 72% 80%, rgba(255, 255, 255, 0.5), transparent),
+    radial-gradient(1px 1px at 78% 50%, rgba(255, 255, 255, 0.9), transparent),
+    radial-gradient(2px 2px at 85% 70%, rgba(255, 255, 255, 0.6), transparent),
+    radial-gradient(1px 1px at 92% 35%, rgba(255, 255, 255, 0.8), transparent),
+    radial-gradient(1px 1px at 18% 85%, rgba(255, 255, 255, 0.4), transparent),
+    radial-gradient(2px 2px at 28% 5%, rgba(255, 255, 255, 0.7), transparent),
+    radial-gradient(1px 1px at 38% 95%, rgba(255, 255, 255, 0.5), transparent),
+    radial-gradient(1px 1px at 62% 8%, rgba(255, 255, 255, 0.9), transparent),
+    radial-gradient(2px 2px at 88% 92%, rgba(255, 255, 255, 0.6), transparent),
+    radial-gradient(1px 1px at 12% 55%, rgba(255, 255, 255, 0.8), transparent),
+    radial-gradient(1px 1px at 95% 65%, rgba(255, 255, 255, 0.4), transparent),
+    /* Additional smaller stars */
+    radial-gradient(0.5px 0.5px at 5% 45%, rgba(255, 255, 255, 0.3), transparent),
+    radial-gradient(0.5px 0.5px at 25% 80%, rgba(255, 255, 255, 0.4), transparent),
+    radial-gradient(0.5px 0.5px at 45% 25%, rgba(255, 255, 255, 0.3), transparent),
+    radial-gradient(0.5px 0.5px at 65% 90%, rgba(255, 255, 255, 0.5), transparent),
+    radial-gradient(0.5px 0.5px at 85% 15%, rgba(255, 255, 255, 0.3), transparent),
+    radial-gradient(0.5px 0.5px at 95% 45%, rgba(255, 255, 255, 0.4), transparent);
+  animation: starfield 120s linear infinite;
   pointer-events: none;
 }
 
-@keyframes slide {
+/* Nebula-like glow effect */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: 
+    radial-gradient(circle at 20% 20%, hsla(190, 80%, 40%, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, hsla(280, 70%, 60%, 0.06) 0%, transparent 50%),
+    radial-gradient(circle at 40% 60%, hsla(190, 60%, 50%, 0.04) 0%, transparent 50%);
+  animation: nebula 180s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes starfield {
   from {
-    background-position: 0 0;
+    transform: translateY(0);
   }
   to {
-    background-position: 256px 224px;
+    transform: translateY(-100px);
+  }
+}
+
+@keyframes nebula {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(1.02) rotate(180deg);
   }
 }
 
@@ -40,6 +90,138 @@ body::before {
   to {
     transform: rotate(360deg);
   }
+}
+
+/* Subtle glow animation for interactive elements */
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 5px hsl(190 80% 40% / 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px hsl(190 80% 40% / 0.6), 0 0 30px hsl(190 80% 40% / 0.4);
+  }
+}
+
+/* Pulsing animation for loading states */
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.02);
+  }
+}
+
+/* Shimmer effect for text gradients */
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+/* Add glow effect to focus states */
+:focus-visible {
+  outline: 2px solid hsl(190 80% 40%);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px hsl(190 80% 40% / 0.2);
+}
+
+/* Enhanced button hover states */
+.btn-glow:hover {
+  animation: glow 2s ease-in-out infinite;
+}
+
+/* EVE Online themed rank effects */
+@keyframes champion-glow {
+  0%, 100% {
+    box-shadow: 
+      0 0 10px hsl(45 95% 60% / 0.6),
+      0 0 20px hsl(45 95% 60% / 0.4),
+      0 0 30px hsl(45 95% 60% / 0.2);
+  }
+  50% {
+    box-shadow: 
+      0 0 15px hsl(45 95% 60% / 0.8),
+      0 0 30px hsl(45 95% 60% / 0.6),
+      0 0 45px hsl(45 95% 60% / 0.3);
+  }
+}
+
+@keyframes elite-pulse {
+  0%, 100% {
+    box-shadow: 
+      0 0 8px hsl(190 85% 45% / 0.5),
+      0 0 16px hsl(190 85% 45% / 0.3);
+  }
+  50% {
+    box-shadow: 
+      0 0 12px hsl(190 85% 45% / 0.7),
+      0 0 24px hsl(190 85% 45% / 0.4);
+  }
+}
+
+@keyframes veteran-shimmer {
+  0%, 100% {
+    box-shadow: 
+      0 0 6px hsl(280 75% 65% / 0.4),
+      0 0 12px hsl(280 75% 65% / 0.2);
+  }
+  50% {
+    box-shadow: 
+      0 0 10px hsl(280 75% 65% / 0.6),
+      0 0 20px hsl(280 75% 65% / 0.3);
+  }
+}
+
+/* Special rank badges */
+.rank-champion {
+  animation: champion-glow 3s ease-in-out infinite;
+  position: relative;
+}
+
+.rank-champion::before {
+  content: "👑";
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  font-size: 16px;
+  z-index: 10;
+  filter: drop-shadow(0 0 4px hsl(45 95% 60%));
+}
+
+.rank-elite {
+  animation: elite-pulse 2.5s ease-in-out infinite;
+  position: relative;
+}
+
+.rank-elite::before {
+  content: "⚡";
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  font-size: 14px;
+  z-index: 10;
+  filter: drop-shadow(0 0 3px hsl(190 85% 45%));
+}
+
+.rank-veteran {
+  animation: veteran-shimmer 2s ease-in-out infinite;
+  position: relative;
+}
+
+.rank-veteran::before {
+  content: "⭐";
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  font-size: 12px;
+  z-index: 10;
+  filter: drop-shadow(0 0 2px hsl(280 75% 65%));
 }
 
 @media (prefers-reduced-motion) {
