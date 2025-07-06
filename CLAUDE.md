@@ -233,6 +233,8 @@ NODE_ENV=production bun src/index.tsx
 ## Important Notes
 
 - All external API calls include proper error handling
+- Zkillboard API calls use proper User-Agent identification and gzip compression
+- Killmail fetching implements full pagination to capture all character data
 - Character portraits are cached locally to minimize CCP API calls
 - Debounced search prevents API spam during user input
 - SQLite database automatically creates tables and columns on startup
