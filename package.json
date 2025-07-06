@@ -4,6 +4,9 @@
   "description": "EVE Online character killmail tracker for abyssal space encounters",
   "private": true,
   "type": "module",
+  "engines": {
+    "node": "20.x"
+  },
   "main": "src/index.tsx",
   "module": "src/index.tsx",
   "scripts": {
