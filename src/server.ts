@@ -172,7 +172,7 @@ app.get('/api/leaderboard', (req, res) => {
   }
 });
 
-app.get('/api/character-image/:id', (req, res) => {
+app.get('/api/character-image/:id', async (req, res) => {
     try {
         const characterId = parseInt(req.params.id, 10);
         const stmt = db.prepare(`
@@ -217,14 +217,14 @@ app.get('/api/character-image/:id', (req, res) => {
               console.warn(`Failed to fetch portrait for character ${characterId}: ${imageResponse.status}`);
               // If fetch fails and we have old cached data, use it if available
               if (!result?.image_data) {
-                return new Response("Character portrait not found", { status: 404 });
+                return res.status(404).send("Character portrait not found");
               }
             }
           } catch (fetchError) {
             console.warn(`Error fetching portrait for character ${characterId}:`, fetchError);
             // If fetch fails and we have old cached data, use it if available
             if (!result?.image_data) {
-              return new Response("Failed to fetch character portrait", { status: 500 });
+              return res.status(500).send("Failed to fetch character portrait");
             }
           }
         }
@@ -235,7 +235,7 @@ app.get('/api/character-image/:id', (req, res) => {
           res.setHeader('Cache-Control', 'public, max-age=604800'); // 7 days
           res.send(imageData);
         } else {
-          return new Response("Character portrait not available", { status: 404 });
+          return res.status(404).send("Character portrait not available");
         }
     } catch (error) {
         console.error(error);
