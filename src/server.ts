@@ -177,7 +177,7 @@ app.get('/api/leaderboard', (req, res) => {
   }
 });
 
-app.get('/api/character-image/:charId', (async (req: Request<{ charId: string }>, res: Response) => {
+app.get(['/api/character-image/:charId'], (async (req: Request<{ charId: string }>, res: Response) => {
     try {
         const characterId = parseInt(req.params.charId, 10);
         const stmt = db.prepare(`
