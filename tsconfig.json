@@ -5,7 +5,7 @@
     "moduleResolution": "NodeNext",
     "jsx": "react-jsx",
     "allowJs": true,
-    "allowImportingTsExtensions": true,
+    "allowImportingTsExtensions": false,
     "verbatimModuleSyntax": false,
     "noEmit": false,
     "allowSyntheticDefaultImports": true,
