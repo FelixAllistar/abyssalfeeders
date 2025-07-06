@@ -1,6 +1,9 @@
 # Use a Node.js base image
 FROM node:20-alpine
 
+# Install build dependencies for native modules like better-sqlite3
+RUN apk add --no-cache python3 build-base
+
 # Set the working directory
 WORKDIR /app
 
