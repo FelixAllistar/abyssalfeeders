@@ -246,7 +246,7 @@ app.get('/api/character-image/:charId', (async (req: Request<{ charId: string }>
         console.error(error);
         res.status(500).send('Internal Server Error');
     }
-}) as RequestHandler<{ id: string }>);
+}) as RequestHandler<{ charId: string }>);
 
 // Serve frontend in production
 if (process.env.NODE_ENV === 'production') {
