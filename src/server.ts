@@ -12,7 +12,8 @@ app.use(cors());
 app.use(express.json());
 
 // Initialize SQLite database
-const db = new Database("leaderboard.db");
+const dbPath = process.env.DATABASE_PATH || "leaderboard.db";
+const db = new Database(dbPath);
 
 // Create leaderboard table and add columns if they don't exist
 db.exec(`
