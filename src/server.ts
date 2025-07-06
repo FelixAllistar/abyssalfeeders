@@ -177,9 +177,9 @@ app.get('/api/leaderboard', (req, res) => {
   }
 });
 
-app.get('/api/character-image/:id', (async (req: Request<{ id: string }>, res: Response) => {
+app.get('/api/character-image/:charId', (async (req: Request<{ charId: string }>, res: Response) => {
     try {
-        const characterId = parseInt(req.params.id, 10);
+        const characterId = parseInt(req.params.charId, 10);
         const stmt = db.prepare(`
             SELECT image_data, image_content_type, image_fetched_at
             FROM leaderboard WHERE character_id = ?
